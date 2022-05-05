@@ -88,12 +88,13 @@ maker.transformation('lenna.png')       # 将文件D:\xxx\yyy\lenna.png转换为
 |Maker.set_color_space(color_space: str)     |用于设置转换的图片使用的色彩空间|
 |Maker.set_direction(direction: str)         |用于设置转换后的结构的方向|
 |Maker.set_path(path: [str, Path], path_type: str = "in")   |用于设置文件输入输出的路径，默认是设置输入路径|
-|Maker.set_size(struct_size: [tuple[int, int], list[, ])    |用于设置输出的结构大小|
+|Maker.set_size(struct_size: [tuple[int, int], list[int, int])    |用于设置输出的结构大小|
 |Maker.set_transformation_file(trans_file_name: str)        |用于设置需要转换的文件名|
 |Maker.set_using_blocks(using_blocks: [str, list, tuple])   |用于设置结构所使用的方块|
 |Maker.set_version(version: [float, str])    |用于设置结构的游戏版本|
 |Maker.settings(setting_dict: dict)          |用于一次性设置多个需要设置的值|
 |Maker.transformation(import_file: str = None)              |用于转换文件用的主函数|
+
 需要详细了解原理之类的，可以直接看代码中的文档。
 ### 部分函数的详细说明
 ```
@@ -145,7 +146,7 @@ maker.transformation('yyyy.png')    # 推荐使用方法
 
 >> 少女祈祷中...: 100%|██████████| 128/128 [00:00<00:00, 319.99it/s, Now file=1, Total=1]
 ```
-以上两串代码执行的是相同的操作。若仅仅只是转换一张图片，这里**建议使用下面的生成方法**。
+以上两串代码执行的是相同的操作。若仅仅只是转换一张图片，这里**建议使用第二种生成方法**。
 ```
 maker.set_path(r"D:\xxxx")
 maker.set_size([128, 128])
@@ -181,7 +182,7 @@ maker.transformation(r"yyy.png")
 >> 少女祈祷中...: 100%|██████████| 128/128 [00:00<00:00, 312.18it/s, Now file=1, Total=1]
 ```
 !['ud'模式下的生成结构](./imgs/2022-05-05_10.50.32.png)
-Maker.set_direction()用于设置结构方向，Maker.set_color_space()用于设置使用方块，上图便是这串代码的演示。
+Maker.set_direction()用于设置结构方向，Maker.set_color_space()用于设置使用方块，上图便是这串代码的演示。(可以注意一下图片中的中心指针)
 *****************
 ```
 print(maker.get_allow_settings())
