@@ -6,7 +6,7 @@
 
 """关于这个模块的更多信息，可以在 https://github.com/Dedicatu1979/MCPixelArtMaker 里查看更多"""
 
-__version__ = "1.1.1"
+__version__ = "1.1.2"
 
 from .color import Color
 from .maker import Maker
@@ -31,4 +31,5 @@ from .structure import Structure
     已知bug1: 在exe中或直接使用本文件时，Maker.batch无论设置的是什么，只要设置了就一定会变成True。不想修这个bug，主要是没意义。。(这个bug已经修掉了)
     bug2: 在非批量模式下依旧可以批量生成文件，方法是在Maker.transformation()之前多设置几个set_transformation_file()，这个bug也没有多大修的必要。。
         (我其实觉得这个可以当个特性用，没必要修)
-2022.5.4 又把maker给删删改改了下，顺带给这些文件通通加了些介绍。"""
+2022.5.4 又把maker给删删改改了下，顺带给这些文件通通加了些介绍。把README文件写了一大半.
+2022.5.5 又修掉了几个小bug，然后把README文件给写完了，差不多终于全部搞完了。。"""

@@ -40,7 +40,7 @@ class Maker:
         self.__file_cache = []  # 所需要生成结构的文件
         self.__using_blocks = ['wool']  # 生成的像素画所使用的方块
         self.__allow_blocks = ("wool", "concrete", "terracotta")  # 像素画生成器允许使用的方块
-        self.__allow_setting = ("version", "direction", "color_space", "batch")  # 生成器允许在外部设置中直接设置的参数名
+        self.__allow_settings = ("version", "direction", "color_space", "batch")  # 生成器允许在外部设置中直接设置的参数名
         self.__allow_color_space = ("RGB", "HSV", "HSL", "L")  # 生成器允许的颜色空间
         self.version = 1.18  # 生成的结构的版本
         self.direction = 'ns'  # 生成的像素画的方向
@@ -93,9 +93,9 @@ class Maker:
         """用于获取允许使用的方块"""
         return list(self.__allow_blocks)
 
-    def get_allow_setting(self):
+    def get_allow_settings(self):
         """用于获取可以在外部直接修改的参数名"""
-        return list(self.__allow_setting)
+        return list(self.__allow_settings)
 
     def get_allow_color_space(self):
         """用于获取支持的颜色空间"""
@@ -171,7 +171,7 @@ class Maker:
         """本方法用于设置文件输入输出的绝对路径，输入类型为str。当path_type = 'in'时，表示设置的是输入路径，
         当path_type = 'out'时，表示设置的是输出路径。输入错误或默认时为设置输入路径。"""
         self.__check_file_path(path)
-        if path_type == "out":
+        if path_type.lower() == "out":
             self.__out_path = Path(path)
         else:
             self.__file_path = Path(path)
@@ -187,7 +187,7 @@ class Maker:
     def settings(self, setting_dict: dict):
         """用于在外部使用字典来设置Maker内的部分参数"""
         for key, value in setting_dict.items():
-            if key not in self.__allow_setting:
+            if key not in self.__allow_settings:
                 raise NameError(f"NameError:\n\t参数'{key}'无法被设置，可能是因为不存在，也可能是不允许设置这个参数。")
             else:
                 eval(f'self.set_{key}("{value}")')

@@ -43,7 +43,7 @@ def main():
     print(f"您当前输入的方块为:{using_block}") if using_block != '' else print("当前使用默认方块。")
     print("--*--*--#--*--*--")
     others = input("是否还有其他需要设置的，如有需要设置的话请以{'大括号': '冒号引号','的方式': '继续进行设置'}(字典形式)输入：\n"
-                   f"{maker.get_allow_setting()} 以上是允许继续设置的参数，如不需要的话可以直接跳过。\n")
+                   f"{maker.get_allow_settings()} 以上是允许继续设置的参数，如不需要的话可以直接跳过。\n")
     if others == '':
         pass
     elif isinstance(eval(others), dict):

@@ -87,7 +87,9 @@ class Structure:
         return temp
 
     def __check_struct_size(self, struct_size):
-        """用于检测struct_size是否超过最大值"""
+        """用于检测struct_size是否正确，且是否超过最大值"""
+        if not isinstance(struct_size, (list, tuple)):
+            raise ValueError(f"ValueError:\n\t未设置结构大小，或设置的内容不是list或tuple类型。")
         if self.direction == "ns":
             if struct_size[1] <= 256:
                 return struct_size
@@ -95,6 +97,8 @@ class Structure:
                 return struct_size
             else:
                 raise ValueError(f"ValueError:\n\t建筑高度'{struct_size[1]}'超过了'{self.version}'版本的最大建筑高度。")
+        else:
+            return struct_size
 
     def mk_struct(self, picture: np.ndarray, times=0, all_time=1) -> nbt.NBTFile:
         """将图片转换为nbt文件，图片输入为ndarray格式，返回的就是所转换的nbt文件
